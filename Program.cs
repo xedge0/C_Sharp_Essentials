@@ -1,4 +1,9 @@
 ﻿using LinkedIn.Essentials;
 
-string db = Constants.CONFIG_DB_NAME;
-Console.WriteLine(db);
+
+// using Types to cast variables
+IPerson e = new ShiftWorker();
+e.FirstName = "Edge";
+((ShiftWorker)e).ShiftStartTime = new TimeOnly(8, 30);
+
+
