@@ -11,7 +11,6 @@ public abstract class Employee : IPerson
     public string? LastName { get; set; }
     public string? FirstName { get; set; }
 
-
     public DateOnly StartDate { get; set; }
 
     //virtual property
@@ -56,6 +55,7 @@ public class ShiftWorker : Employee
         return false;
         }
     }
+
 public class Manager : Employee, IPerson
     {
     public int NumberOfDirectReports { get; set; }
@@ -76,6 +76,7 @@ public class Manager : Employee, IPerson
         base.Terminate(terminationEffectiveDate);
         }
     }
+
 [Flags] // Cast for multiple values
 public enum ShiftDays : short
     {
