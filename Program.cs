@@ -1,15 +1,14 @@
 ﻿using LinkedIn.Essentials;
 
 
-// using var keyword and anonymous types
+// using dynamic variables
 
-var e = new
+dynamic e = new
     {
     firstName = "Ahmed",
     lastName = "Dewedar",
-    kids = new string[] { "Edge", "xEdge" }
     };
 
-var kid1 = e.kids[0];
-Console.WriteLine(kid1);
+var kid1 = e.kids[0]; // raise Error on compile
+Console.WriteLine(e.firstName);
 
