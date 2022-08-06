@@ -21,6 +21,16 @@ static ShiftDays GetShiftDays(DayOfWeek day) => day switch
         _ => throw new ArgumentException("Invalid day of the week supplied")
         };
 
+
+var shiftNight = new DateTime(2022, 08, 06, 16, 0, 0);
+Console.WriteLine($"Shift : {(IsWeekendNightShift(shiftNight) ? "is" : "is not")} a weekend night");
+
+static bool IsWeekendNightShift(DateTime shiftDate) => shiftDate switch
+    {
+            { Hour: >= 15, DayOfWeek: DayOfWeek.Saturday or DayOfWeek.Friday } => true,
+        _ => false
+        };
+
 static string PadAndTrim([AllowNull] string input, int length, char padChar)
     {
     if(input is null)
