@@ -1,17 +1,17 @@
 ﻿using LinkedIn.Essentials;
 
-Employee e1 = new Employee("Ahmed", "Dewedar");
-Console.WriteLine($"Welcome {e1.FirstName} {e1.LastName} as an Employer.");
-
-Employee e2 = new Employee()
+Employee e = new Employee("Ahmed", "Dewedar")
     {
-    FirstName = "Ahmed",
-    LastName = "Dewedar",
-    Id = 45
+    Id = 875,
+    StartDate = new DateOnly(2021, 1, 15)
     };
+Console.WriteLine($"Welcome {e.FirstName} {e.LastName} as an Employer with ID {e.Id} can start work at {e.StartDate}.");
 
-Console.WriteLine($"{e2.FirstName} {e2.LastName} has Id {e2.Id}");
+//PremiereCustomer pCust = new PremiereCustomer(2);
+PremiereCustomer pCust = new PremiereCustomer() { CustomerLevel = 2};
+pCust.FirstName = "Edge";
+Console.WriteLine($"{pCust.FirstName} has level {pCust.CustomerLevel}.");
 
-
-Employee m = new Manager("Ahmed", "Dewedar");
-Console.WriteLine($"Welcome {m.FirstName} {m.LastName} as a Manager.");
+Manager m = new Manager("Ahmed", "Dewedar");
+m.SetReports(3);
+Console.WriteLine($"Manager {m.FirstName} {m.LastName} has {m.NumberOfDirectReports} Reports.");

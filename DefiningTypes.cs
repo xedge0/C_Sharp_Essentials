@@ -31,7 +31,13 @@ public class Employee : IPerson
 public class Manager : Employee, IPerson
     {
     public Manager(string firstName, string lastName) : base(firstName, lastName) { }
-    public int NumberOfDirectReports { get; set; }
+    // Set a function to modify the property internally only
+    public void SetReports(int numberofreports)
+        {
+        NumberOfDirectReports = numberofreports;
+        }
+    // set is being intit internal class only using [private] access
+    public int NumberOfDirectReports { get; private set; }
     }
 
 //structs - value types
@@ -60,6 +66,14 @@ public record Customer : IPerson
 
 public record PremiereCustomer : Customer
     {
+    //public PremiereCustomer(byte level)
+    //    {
+    //    CustomerLevel = level;
+    //    }
+    public PremiereCustomer()
+        {
+
+        }
     public byte CustomerLevel { get; init; }
     }
 
