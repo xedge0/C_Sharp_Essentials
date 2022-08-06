@@ -2,14 +2,14 @@
 
 public interface IPerson
     {
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
+    public string? FirstName { get; set; }
+    public string? LastName { get; set; }
     }
 public abstract class Employee : IPerson
     {
     //IPerson
-    public string LastName { get; set; }
-    public string FirstName { get; set; }
+    public string? LastName { get; set; }
+    public string? FirstName { get; set; }
 
 
     public DateOnly StartDate { get; set; }
