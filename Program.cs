@@ -1,14 +1,13 @@
 ﻿using LinkedIn.Essentials;
 
 
-// using dynamic variables
+ShiftWorker sw = new ShiftWorker() { FirstName = "Ahmed", LastName = "Dewedar" };
+sw.DaysAvaliable = ShiftDays.Wednesday;
 
-dynamic e = new
-    {
-    firstName = "Ahmed",
-    lastName = "Dewedar",
-    };
+Console.WriteLine(sw.DaysAvaliable);
 
-var kid1 = e.kids[0]; // raise Error on compile
-Console.WriteLine(e.firstName);
+var day = DayOfWeek.Monday;
+Console.WriteLine(day);
 
+var shiftday = ShiftDays.Saturday;
+Console.WriteLine((int)shiftday);

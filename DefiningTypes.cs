@@ -41,6 +41,7 @@ public abstract class Employee : IPerson
 
 public class ShiftWorker : Employee
     {
+    public ShiftDays DaysAvaliable { get; set; }
     public TimeOnly ShiftStartTime { get; set; }
     public override int EmployeeId { get => 1; }
 
@@ -74,4 +75,16 @@ public class Manager : Employee, IPerson
         //optional - call base implementation
         base.Terminate(terminationEffectiveDate);
         }
+    }
+public enum ShiftDays
+    {
+    Saturday =1,
+    Sunday = 2,
+    //Saturday and Sunday = 3
+    Monday = 4,
+    Tuesday = 8,
+    Wednesday = 16,
+    Thursday = 32,
+    Friday = 64
+
     }
