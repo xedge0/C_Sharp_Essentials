@@ -2,14 +2,14 @@
 
 public interface IPerson
     {
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
+    public string? FirstName { get; set; }
+    public string? LastName { get; set; }
     }
 public abstract class Employee : IPerson
     {
     //IPerson
-    public string LastName { get; set; }
-    public string FirstName { get; set; }
+    public string? LastName { get; set; }
+    public string? FirstName { get; set; }
 
 
     public DateOnly StartDate { get; set; }
@@ -41,6 +41,7 @@ public abstract class Employee : IPerson
 
 public class ShiftWorker : Employee
     {
+    public ShiftDays DaysAvaliable { get; set; }
     public TimeOnly ShiftStartTime { get; set; }
     public override int EmployeeId { get => 1; }
 
@@ -74,4 +75,18 @@ public class Manager : Employee, IPerson
         //optional - call base implementation
         base.Terminate(terminationEffectiveDate);
         }
+    }
+[Flags] // Cast for multiple values
+public enum ShiftDays : short
+    {
+    Saturday =1,
+    Sunday = 2,
+    //Saturday and Sunday = 3
+    Monday = 4,
+    Tuesday = 8,
+    Wednesday = 16,
+    Thursday = 32,
+    Weekdays = 63,
+    Friday = 64,
+    Weekend = 65
     }
