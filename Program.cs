@@ -5,6 +5,22 @@ string? input = "something|";
 
 Console.WriteLine(PadAndTrim(input, 15, '0'));
 
+//var shiftDay = GetShiftDays(DateTime.Now.DayOfWeek);
+var shiftDay = GetShiftDays((DayOfWeek)17);
+Console.WriteLine(shiftDay);
+
+static ShiftDays GetShiftDays(DayOfWeek day) => day switch
+    {
+        DayOfWeek.Saturday => ShiftDays.Saturday,
+        DayOfWeek.Sunday => ShiftDays.Sunday,
+        DayOfWeek.Monday => ShiftDays.Monday,
+        DayOfWeek.Tuesday => ShiftDays.Tuesday,
+        DayOfWeek.Wednesday => ShiftDays.Wednesday,
+        DayOfWeek.Thursday => ShiftDays.Thursday,
+        DayOfWeek.Friday => ShiftDays.Friday,
+        _ => throw new ArgumentException("Invalid day of the week supplied")
+        };
+
 static string PadAndTrim([AllowNull] string input, int length, char padChar)
     {
     if(input == null)
