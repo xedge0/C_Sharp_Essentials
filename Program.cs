@@ -1,24 +1,13 @@
 ﻿using LinkedIn.Essentials;
 
+string input = null;
+int definitiveInt;
 
-ShiftWorker sw = new ShiftWorker() { FirstName = "Ahmed", LastName = "Dewedar" };
-sw.DaysAvaliable = ShiftDays.Weekdays;
+int? age = null;
+Nullable<int> age2 = null;
 
-bool avaliableMondays = sw.DaysAvaliable.HasFlag(ShiftDays.Monday);
-Console.WriteLine($"Avaliabe Mondays : {avaliableMondays}");
+age = 17;
 
-bool avaliableFridays = (sw.DaysAvaliable & ShiftDays.Friday) == ShiftDays.Friday;
-Console.WriteLine($"Avaliable Fridays : {avaliableFridays}");
-
-//var shiftNames = Enum.GetName(typeof(ShiftDays));
-//Console.WriteLine(String.Join(',', shiftNames));
-
-var shiftDaysValue = (short[])Enum.GetValues(typeof(ShiftDays));
-Console.WriteLine(String.Join(',', shiftDaysValue));
-
-
-var day = DayOfWeek.Monday;
-//Console.WriteLine(day);
-
-var shiftday = ShiftDays.Saturday;
-//Console.WriteLine((int)shiftday);
+if(input != null) { Console.WriteLine($"String is : {input}"); }
+if(age != null) { Console.WriteLine($"{age}"); }
+if(age.HasValue) { Console.WriteLine(age.Value); }
