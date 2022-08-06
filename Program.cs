@@ -1,27 +1,35 @@
 ﻿using LinkedIn.Essentials;
 using System.Diagnostics.CodeAnalysis;
 
-string? input = null;
-int definitiveInt;
+string? input = "something|";
 
-int? age = null;
-Nullable<int> age2 = null;
-
-age = 5;
-age ??= 12; // if value is null, assign a default value
-definitiveInt = age ?? 17; // if age is null, assign a default value
-//definitiveInt = age != null ? age.Value : 17; // same logic
-
-Console.WriteLine($"Age is : {definitiveInt}");
 Console.WriteLine(PadAndTrim(input, 15, '0'));
 
-static string PadAndTrim([AllowNull]string input, int length, char padChar)
+static string PadAndTrim([AllowNull] string input, int length, char padChar)
     {
-    if (input == null)
+    if(input == null)
+        {
         return String.Empty.PadLeft(length, padChar);
-    else
+        }
+
+    else if(input.Length <= length && input != null)
+        {
+        switch(padChar)
+            {
+            case ' ':
+            case '|':
+                return input.Trim().PadLeft(length, padChar);
+            case '0':
+            case '9':
+                return input.Trim().PadRight(length, padChar);
+            default:
+                Console.WriteLine("No match found for pad character");
+                break;
+            }
         return input.Trim().PadLeft(length, padChar);
-
-    //return input?.Trim()?.PadLeft(length, padChar); //if input or trim is null do not run
-
+        }
+    else
+        {
+        throw new ArgumentException("Input is longer than the requested length");
+        }
     }
