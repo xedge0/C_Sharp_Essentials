@@ -2,7 +2,7 @@
 
 
 ShiftWorker sw = new ShiftWorker() { FirstName = "Ahmed", LastName = "Dewedar" };
-sw.DaysAvaliable = ShiftDays.Wednesday;
+sw.DaysAvaliable = ShiftDays.Saturday | ShiftDays.Friday;
 
 Console.WriteLine(sw.DaysAvaliable);
 

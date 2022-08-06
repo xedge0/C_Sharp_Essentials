@@ -76,7 +76,8 @@ public class Manager : Employee, IPerson
         base.Terminate(terminationEffectiveDate);
         }
     }
-public enum ShiftDays
+[Flags] // Cast for multiple values
+public enum ShiftDays : short
     {
     Saturday =1,
     Sunday = 2,
@@ -85,6 +86,7 @@ public enum ShiftDays
     Tuesday = 8,
     Wednesday = 16,
     Thursday = 32,
-    Friday = 64
-
+    Weekdays = 63,
+    Friday = 64,
+    Weekend = 65
     }
