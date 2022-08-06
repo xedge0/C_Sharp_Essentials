@@ -1,9 +1,13 @@
 ﻿using LinkedIn.Essentials;
 
 
-// using Types to cast variables
-IPerson e = new ShiftWorker();
+// using var keyword
+
+var x = 10;
+var y = "Edge";
+
+var e = new ShiftWorker();
 e.FirstName = "Edge";
-((ShiftWorker)e).ShiftStartTime = new TimeOnly(8, 30);
+e.ShiftStartTime = new TimeOnly(8, 30);
 
 
