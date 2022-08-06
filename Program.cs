@@ -58,10 +58,18 @@ Console.WriteLine(GetPersonalDetails(mgr));
 
 static string GetPersonalDetails(IPerson p)
     {
-    //ShiftWorker? swv = p as ShiftWorker; //as take the value and compare
-    if(p is ShiftWorker swv) // check if p is not null as well as is shiftworker type then declare and assign it to swv
-        { return $"Employee : {swv.FirstName} {swv.LastName} Started: {swv.StartDate}"; }
-    else if(p is Manager mgrv)
-        { return $"Manager : {mgrv.FirstName} {mgrv.LastName} Reports: {mgrv.NumberOfDirectReports}"; }
-    return String.Empty;
+    var result = p switch
+        {
+            ShiftWorker swv => $"Employee : {swv.FirstName} {swv.LastName} Started: {swv.StartDate}",
+            Manager mgrv => $"Manager : {mgrv.FirstName} {mgrv.LastName} Reports: {mgrv.NumberOfDirectReports}",
+            _ => String.Empty
+            };
+    return result;
+
+    ////ShiftWorker? swv = p as ShiftWorker; //as take the value and compare
+    //if(p is ShiftWorker swv) // check if p is not null as well as is shiftworker type then declare and assign it to swv
+    //    { return $"Employee : {swv.FirstName} {swv.LastName} Started: {swv.StartDate}"; }
+    //else if(p is Manager mgrv)
+    //    { return $"Manager : {mgrv.FirstName} {mgrv.LastName} Reports: {mgrv.NumberOfDirectReports}"; }
+    //return String.Empty;
     }
