@@ -32,11 +32,9 @@ static string PadAndTrim([AllowNull] string input, int length, char padChar)
         {
         switch(padChar)
             {
-            case ' ':
-            case '|':
+            case (>= 'a' and <= 'z') or (>= 'A' and <= 'Z'):
                 return input.Trim().PadLeft(length, padChar);
-            case '0':
-            case '9':
+            case (>= '0' and <= '9'):
                 return input.Trim().PadRight(length, padChar);
             default:
                 Console.WriteLine("No match found for pad character");
