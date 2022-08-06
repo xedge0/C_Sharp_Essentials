@@ -1,13 +1,15 @@
 ﻿using LinkedIn.Essentials;
 
 
-// using var keyword
+// using var keyword and anonymous types
 
-var x = 10;
-var y = "Edge";
+var e = new
+    {
+    firstName = "Ahmed",
+    lastName = "Dewedar",
+    kids = new string[] { "Edge", "xEdge" }
+    };
 
-var e = new ShiftWorker();
-e.FirstName = "Edge";
-e.ShiftStartTime = new TimeOnly(8, 30);
-
+var kid1 = e.kids[0];
+Console.WriteLine(kid1);
 
