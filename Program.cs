@@ -6,8 +6,12 @@ int definitiveInt;
 int? age = null;
 Nullable<int> age2 = null;
 
-age = 17;
+age = 5;
+age ??= 12; // if value is null, assign a default value
+definitiveInt = age ?? 17; // if age is null, assign a default value
+//definitiveInt = age != null ? age.Value : 17; // same logic
 
-if(input != null) { Console.WriteLine($"String is : {input}"); }
+Console.WriteLine(definitiveInt);
+
 if(age != null) { Console.WriteLine($"{age}"); }
 if(age.HasValue) { Console.WriteLine(age.Value); }
