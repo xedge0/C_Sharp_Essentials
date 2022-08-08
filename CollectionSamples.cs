@@ -115,8 +115,7 @@ namespace C_Sharp_Essentials
 
         public static void Dictionary()
             {
-            Dictionary<string, Person> people =
-                new Dictionary<string, Person>();
+            Dictionary<string, Person> people = new Dictionary<string, Person>();
 
             people.Add("m", new Person
                 {
@@ -169,6 +168,30 @@ namespace C_Sharp_Essentials
             foreach(var item in items.AllKeys)
                 {
                 Console.WriteLine(items[item]);
+                }
+            }
+        public static void ConCurrentCollection()
+            {
+            var bag = new System.Collections.Concurrent.ConcurrentBag<Person>();
+            bag.Add(new Person
+                {
+                FirstName = "matt",
+                LastName = "milner",
+                Age = 50,
+                Id = 1
+                });
+
+            bag.Add(new Person
+                {
+                FirstName = "Edge",
+                LastName = "milner",
+                Age = 50,
+                Id = 1
+                });
+
+            foreach(var item in bag)    
+                {
+                Console.WriteLine(item.FirstName);
                 }
             }
         }
