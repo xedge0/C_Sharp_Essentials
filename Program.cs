@@ -1,5 +1,10 @@
 ﻿using C_Sharp_Essentials;
 
+CollectionSamples.Queue();
+CollectionSamples.Stack();
+Console.WriteLine();
+//return; // skip code
+
 string[] names = new string[2];
 names[0] = "Alex";
 names[1] = "Stone";
