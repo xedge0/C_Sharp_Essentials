@@ -1,18 +1,21 @@
 ﻿using C_Sharp_Essentials;
 
+string[] names = new string[2];
+names[0] = "Alex";
+names[1] = "Stone";
 
-var c1 = new Customer { Id = 5, FirstName = "Stone", LastName = "Edge", CreateDate = new DateOnly(2014,01,22) };
-var c2 = new Customer { Id = 2, FirstName = "Alex", LastName = "Stone", CreateDate = new DateOnly(2010, 04, 13) };
+Console.WriteLine($"Hello {names[0]}, {names[1]}");
 
-var mapper = new CustomerToPersonmapper();
-var p = c1.Map<Person>(mapper);  //mapper.Map(c);
-Console.WriteLine(p.FirstName);
+var al = new System.Collections.ArrayList(2);
+al.Add("First");
+al.Add("Second");
+al.Add("Third");
+al.AddRange(new string[] { "rSecond", "rThird", "rFourth", "rFifth" });
 
-var sorter = new sorter<Customer>();
-var customers = new Customer[] { c1, c2 };
-sorter.sort(customers);
-
-foreach (var customer in customers)
+Console.WriteLine($"Collection Size : {al.Count}");
+Console.WriteLine($"Indexed Items from the collections {al[4]}");
+Console.WriteLine("All Items from collections");
+foreach(var item in al)
     {
-    Console.WriteLine($"Customer : {customer.Id} \t : {customer.FirstName} {customer.LastName} \t Joined : {customer.CreateDate}");
+    Console.Write($"{item} ");
     }
