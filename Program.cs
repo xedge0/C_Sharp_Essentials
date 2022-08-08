@@ -1,76 +1,22 @@
-﻿using LinkedIn.Essentials;
-using System.Diagnostics.CodeAnalysis;
+﻿using ClassLibrary;
 
-string? input = "something|";
-Console.WriteLine(PadAndTrim(input, 15, 'X'));
+var p1 = new Person { FirstName = "Alex", LastName = "Stone", Age = 50 };
+var p2 = new Person { FirstName = "Sing", LastName = "Edge", Age = 30 };
 
-static string PadAndTrim([AllowNull] string input, int length, char padChar)
+
+Console.WriteLine($"Person 1 : {p1.FirstName} {p1.LastName} BEFORE method");
+Swap<Person>(ref p1, ref p2);
+Console.WriteLine($"Person 1 : {p1.FirstName} {p1.LastName} OUTSIDE method");
+
+int x = 5, y = 7;
+Console.WriteLine($"X : {x} y : {y} BEFORE method");
+Swap<int>(ref x,ref y);
+Console.WriteLine($"X : {x} y : {y} OUTSIDE method");
+
+static void Swap<T>(ref T first, ref T second) // provide T type generics
     {
-    if(input is null)
-        {
-        return String.Empty.PadLeft(length, padChar);
-        }
-
-    else if(input.Length <= length && input != null)
-        {
-        switch(padChar)
-            {
-            case (>= 'a' and <= 'z') or (>= 'A' and <= 'Z') when padChar != 'X':
-                return input.Trim().PadLeft(length, padChar);
-            case (>= 'a' and <= 'z') or (>= 'A' and <= 'Z') when padChar == 'X':
-                return String.Empty.PadLeft(length, '_');
-            case (>= '0' and <= '9'):
-                return input.Trim().PadRight(length, padChar);
-            default:
-                Console.WriteLine("No match found for pad character");
-                break;
-            }
-        return input.Trim().PadLeft(length, padChar);
-        }
-    else
-        {
-        throw new ArgumentException("Input is longer than the requested length");
-        }
-    }
-
-var shiftDay = GetShiftDays(DateTime.Now.DayOfWeek);
-Console.WriteLine(shiftDay);
-
-static ShiftDays GetShiftDays(DayOfWeek day) => day switch
-    {
-        DayOfWeek.Saturday => ShiftDays.Saturday,
-        DayOfWeek.Sunday => ShiftDays.Sunday,
-        DayOfWeek.Monday => ShiftDays.Monday,
-        DayOfWeek.Tuesday => ShiftDays.Tuesday,
-        DayOfWeek.Wednesday => ShiftDays.Wednesday,
-        DayOfWeek.Thursday => ShiftDays.Thursday,
-        DayOfWeek.Friday => ShiftDays.Friday,
-        _ => throw new ArgumentException("Invalid day of the week supplied")
-        };
-
-
-var shiftNight = new DateTime(2022, 08, 06, 16, 0, 0);
-Console.WriteLine($"Shift : {(IsWeekendNightShift(shiftNight) ? "is" : "is not")} a weekend night");
-
-static bool IsWeekendNightShift(DateTime shiftDate) => shiftDate switch
-    {
-            { Hour: >= 15, DayOfWeek: DayOfWeek.Saturday or DayOfWeek.Friday } => true,
-        _ => false
-        };
-
-IPerson sw = new ShiftWorker() { FirstName = "Ahmed", LastName = "Dewedar", StartDate = new DateOnly(2005, 01, 01) };
-IPerson mgr = new Manager { FirstName = "mAhmed", LastName = "mDewedar", NumberOfDirectReports = 35 };
-Console.WriteLine(GetPersonalDetails(sw));
-Console.WriteLine(GetPersonalDetails(mgr));
-
-static string GetPersonalDetails(IPerson p)
-    {
-    var result = p switch
-        {
-            ShiftWorker swv when swv.StartDate.Year > 2022 => $"Employee : {swv.FirstName} {swv.LastName} Started: {swv.StartDate}",
-            ShiftWorker swv when swv.StartDate.Year < 2022 => $"Employee : {swv.FirstName} {swv.LastName} Started: Older Employee.",
-            Manager mgrv => $"Manager : {mgrv.FirstName} {mgrv.LastName} Reports: {mgrv.NumberOfDirectReports}",
-            _ => String.Empty
-            };
-    return result;
+    T temp = second;
+    second = first;
+    first = temp;
+    Console.WriteLine($"X : {first} y : {second} INSIDE method");
     }
