@@ -1,5 +1,11 @@
 ﻿using C_Sharp_Essential_Library;
 
-ThreadSamples.SimpleThread();
-Console.WriteLine();
-await ThreadSamples.SimpleThreadAsync();  
+Delegate del = WritingHello;
+del.DynamicInvoke("Ahmed");
+DelegateSamples.PassMeWork(WritingHello);
+
+static void WritingHello(string name)
+    {
+    Console.WriteLine($"Hello, {name}");
+    }
+
