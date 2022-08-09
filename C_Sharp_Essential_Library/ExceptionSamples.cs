@@ -11,15 +11,15 @@ public static class ExceptionSamples
 
         //basic try catch
         string filePath = rightPath;
-        System.IO.Stream fileStream = null;
+        //System.IO.Stream? fileStream = null;
         Console.WriteLine($"Current Directory-> {Directory.GetCurrentDirectory()}");
         try
             {
-            fileStream = File.OpenRead(filePath);
-
-            var edge = JsonSerializer.Deserialize<Employee>(fileStream);
-
-            Console.WriteLine($"Employee read from file: {edge?.FirstName} {edge?.LastName}");
+            using(var fileStream = File.OpenRead(filePath))
+                {
+                var edge = JsonSerializer.Deserialize<Employee>(fileStream);
+                Console.WriteLine($"Employee read from file: {edge?.FirstName} {edge?.LastName}");
+                }
             }
         catch(Exception ex)
             {
@@ -27,10 +27,10 @@ public static class ExceptionSamples
             }
         finally
             {
-            if(fileStream != null)
-                {
-                fileStream.Dispose();
-                }
+            //if(fileStream != null)
+            //    {
+            //    fileStream.Dispose();
+            //    }
             }
         }
     }
