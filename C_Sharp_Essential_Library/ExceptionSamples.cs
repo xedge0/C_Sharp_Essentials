@@ -21,6 +21,18 @@ public static class ExceptionSamples
                 Console.WriteLine($"Employee read from file: {edge?.FirstName} {edge?.LastName}");
                 }
             }
+        catch (FileNotFoundException)
+            {
+            Console.WriteLine("File Not Found");
+            }
+        catch(IOException ioex)
+            {
+            Console.WriteLine($"IO Exception: {ioex.Message}");
+            }
+        catch (JsonException jsex)
+            {
+            Console.WriteLine($"JSON Exception: {jsex.Message}");
+            }
         catch(Exception ex)
             {
             Console.WriteLine($"Standard exception caught: {ex.Message}");
