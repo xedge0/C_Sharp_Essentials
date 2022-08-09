@@ -38,17 +38,19 @@ public static class ThreadSamples
         Console.WriteLine($"Main Thread ID: {Thread.CurrentThread.ManagedThreadId}");
         Console.ResetColor();
 
-        await DoFileWorkAsync();
-
+        Task tEdge =  DoFileWorkAsync("Edge");
+        Task tAlex = DoFileWorkAsync("Alex");
         Console.WriteLine("Work happening on the main thread.");
+        
+        await Task.WhenAll(tEdge, tAlex);
         }
-    public static async Task DoFileWorkAsync()
+    public static async Task DoFileWorkAsync(string employeeName)
         {
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine($"File Access Thread ID : {Thread.CurrentThread.ManagedThreadId}");
         Console.ResetColor();
 
-        string filePath = "..\\..\\..\\Edge.json";
+        string filePath = $"..\\..\\..\\{employeeName}.json";
         var employeeJson = await File.ReadAllTextAsync(filePath);
 
         var edge = JsonSerializer.Deserialize<Employee>(employeeJson);
