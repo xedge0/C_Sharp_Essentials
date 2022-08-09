@@ -1,13 +1,5 @@
 ﻿using C_Sharp_Essential_Library;
 
-//ExceptionSamples.BasicExceptions();
-
-try
-    {
-    ExceptionSamples.ThrowExceptions(true);
-    }
-catch(Exception ex)
-    {
-    //throw; // ex; // Console.WriteLine(ex);
-    throw new ApplicationException("app exception", ex);
-    }
+ThreadSamples.SimpleThread();
+Console.WriteLine();
+await ThreadSamples.SimpleThreadAsync();  
