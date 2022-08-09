@@ -29,9 +29,14 @@ public static class ExceptionSamples
             {
             Console.WriteLine($"IO Exception: {ioex.Message}");
             }
-        catch (JsonException jsex)
+        catch (JsonException jsex) when (jsex.Message.Contains("converted", StringComparison.OrdinalIgnoreCase))
             {
             Console.WriteLine($"JSON Exception: {jsex.Message}");
+            }
+        //FOLLOW UP: Add catch with when statement to catch problems with syntax (missing comma e.g.)
+        catch(JsonException jsex2) when(jsex2.Message.Contains("comma"))
+            {
+            Console.WriteLine($"Missing Comma");
             }
         catch(Exception ex)
             {
