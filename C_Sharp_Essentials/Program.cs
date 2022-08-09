@@ -8,5 +8,6 @@ try
     }
 catch(Exception ex)
     {
-    throw; // ex; // Console.WriteLine(ex);
+    //throw; // ex; // Console.WriteLine(ex);
+    throw new ApplicationException("app exception", ex);
     }

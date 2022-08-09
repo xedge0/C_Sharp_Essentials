@@ -58,7 +58,8 @@ public static class ExceptionSamples
             }
         if(shouldThrow.Value)
             {
-            throw new Exception("I was told to throw this");
+            //throw new Exception("I was told to throw this");
+            throw new InvalidOptionException("I was told to throw this");
             }
         else
             {
