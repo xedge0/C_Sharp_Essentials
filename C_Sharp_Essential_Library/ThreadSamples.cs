@@ -37,12 +37,19 @@ public static class ThreadSamples
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine($"Main Thread ID: {Thread.CurrentThread.ManagedThreadId}");
         Console.ResetColor();
+        try
+            {
+            Task tEdge = DoFileWorkAsync("Edge");
+            Task tAlex = DoFileWorkAsync("Alex");
+            Console.WriteLine("Work happening on the main thread.");
 
-        Task tEdge =  DoFileWorkAsync("Edge");
-        Task tAlex = DoFileWorkAsync("Alex");
-        Console.WriteLine("Work happening on the main thread.");
-        
-        await Task.WhenAll(tEdge, tAlex);
+            Task.WaitAll(tEdge, tAlex);
+            }
+        catch(AggregateException aex)
+            {
+            aex.Handle((inner) => inner is JsonException);
+            Console.WriteLine(aex.Message);
+            }
         }
     public static async Task DoFileWorkAsync(string employeeName)
         {
