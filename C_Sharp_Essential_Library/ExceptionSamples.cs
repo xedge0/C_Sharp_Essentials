@@ -21,7 +21,7 @@ public static class ExceptionSamples
                 Console.WriteLine($"Employee read from file: {edge?.FirstName} {edge?.LastName}");
                 }
             }
-        catch (FileNotFoundException)
+        catch(FileNotFoundException)
             {
             Console.WriteLine("File Not Found");
             }
@@ -29,7 +29,7 @@ public static class ExceptionSamples
             {
             Console.WriteLine($"IO Exception: {ioex.Message}");
             }
-        catch (JsonException jsex) when (jsex.Message.Contains("converted", StringComparison.OrdinalIgnoreCase))
+        catch(JsonException jsex) when(jsex.Message.Contains("converted", StringComparison.OrdinalIgnoreCase))
             {
             Console.WriteLine($"JSON Exception: {jsex.Message}");
             }
@@ -48,6 +48,21 @@ public static class ExceptionSamples
             //    {
             //    fileStream.Dispose();
             //    }
+            }
+        }
+    public static void ThrowExceptions(bool? shouldThrow)
+        {
+        if(!shouldThrow.HasValue)
+            {
+            throw new ArgumentNullException("shouldThrow");
+            }
+        if(shouldThrow.Value)
+            {
+            throw new Exception("I was told to throw this");
+            }
+        else
+            {
+            Console.WriteLine("No exceptions being thrown here.");
             }
         }
     }
