@@ -13,8 +13,8 @@ public static class ThreadSamples
         Thread t = new Thread(DoFileWork);
 
         t.Start();
-        Console.WriteLine("Work happening in main thread.");
         t.Join();
+        Console.WriteLine("Work happening in main thread.");
         Console.WriteLine("After all done");
         }
 
@@ -30,7 +30,30 @@ public static class ThreadSamples
 
         var edge = JsonSerializer.Deserialize<Employee>(employeeJson);
 
-        Console.WriteLine($"Employee read from file: {edge?.FirstName} {edge?.LastName}");
+        Console.WriteLine($"The Employee {edge?.FirstName} {edge?.LastName}  has ID: {edge?.Id}");
+        }
+    public static async Task SimpleThreadAsync()
+        {
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine($"Main Thread ID: {Thread.CurrentThread.ManagedThreadId}");
+        Console.ResetColor();
+
+        await DoFileWorkAsync();
+
+        Console.WriteLine("Work happening on the main thread.");
+        }
+    public static async Task DoFileWorkAsync()
+        {
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine($"File Access Thread ID : {Thread.CurrentThread.ManagedThreadId}");
+        Console.ResetColor();
+
+        string filePath = "..\\..\\..\\Edge.json";
+        var employeeJson = await File.ReadAllTextAsync(filePath);
+
+        var edge = JsonSerializer.Deserialize<Employee>(employeeJson);
+        Console.WriteLine($"The Employee {edge?.FirstName} {edge?.LastName}  has ID: {edge?.Id}");
         }
     }
+
 
