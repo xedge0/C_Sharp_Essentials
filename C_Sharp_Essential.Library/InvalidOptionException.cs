@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace C_Sharp_Essential_Library;
+namespace C_Sharp_Essential.Library;
 
 [Serializable]
 public class InvalidOptionException : Exception

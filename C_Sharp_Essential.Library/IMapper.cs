@@ -1,4 +1,4 @@
-﻿namespace C_Sharp_Essential_Library;
+﻿namespace C_Sharp_Essential.Library;
 
 public interface IMapper<S, T>
     {

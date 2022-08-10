@@ -1,57 +1,19 @@
-﻿using C_Sharp_Essential_Library;
+﻿using C_Sharp_Essential.Library;
+using C_Sharp_Essential.Library.Extensions;
 
-//Console.WriteLine("Hit Ctrl + C to cancel");
-//Console.CancelKeyPress += OnCancel;
+//var right = C_Sharp_Essential.Library.Extensions.StringExtensions.Right("Hello Four", 4);
+//Console.WriteLine(right);
 
-//Delegate del = WritingHello;
-//del.DynamicInvoke("Ahmed");
-//DelegateSamples.PassMeWork(WritingHello);
+//var s = "right fives";
+//Console.WriteLine(s.Right(5));
 
-//static void WritingHello(string name)
-//    {
-//    Console.WriteLine($"Hello, {name}");
-//    DelegateSamples.SomethingHappened -= WritingHello; 
-//    }
+var names = new List<string> { "Edge", "Stone", "Alex", "Wall", "Xi" };
 
-//DelegateSamples.SomethingHappened += WritingHello;
-//DelegateSamples.DoSomething();
+var shortest = names.MinBy((s) => s.Length);
+Console.WriteLine($"Shortest Name : {shortest}");
 
-//for(int i = 0; i < 100000; i++)
-//    {
-//    Console.WriteLine(i);
-//    }
-
-//static void OnCancel(object sender, ConsoleCancelEventArgs args)
-//    {
-//    args.Cancel = false; //true
-//    Console.CancelKeyPress -= OnCancel;
-//    }
-
-//static void Writing(string input)
-//    {
-//    Console.WriteLine($"Hello, {input}");
-//    }
-
-DelegateSamples.PassMeWork((s) => Console.WriteLine($"Hello, {s}"));
-DelegateSamples.PassMeLogic((s) =>
-{
-    Console.WriteLine(s);
-    return s.Length;
-});
-
-//static int CalcLength(string input)
-//    {
-//    return input.Length;
-//    }
-
-var t = (string s) => Console.WriteLine(s);
-//t("Edge");
-
-var l = (string s) => s.Length;
-
-var r = (string s) =>
-{
-    Console.WriteLine(s);
-    return s.Length;
-};
-
+var orderedNames = names.OrderBy(s => s.Length);
+foreach (var name in orderedNames)
+    {
+    Console.WriteLine(name);
+    }
