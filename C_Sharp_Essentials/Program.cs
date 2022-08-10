@@ -39,3 +39,15 @@ static int CalcLength(string input)
     {
     return input.Length;
     }
+
+var t = (string s) => Console.WriteLine(s);
+t("Edge");
+
+var l = (string s) => s.Length;
+
+var r = (string s) =>
+{
+    Console.WriteLine(s);
+    return s.Length;
+};
+
