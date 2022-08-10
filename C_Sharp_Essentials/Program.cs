@@ -44,3 +44,6 @@ foreach(var xEmp in xEmpLinq)
     {
     Console.WriteLine($"Employee : {xEmp.FirstName} \t Mission: {xEmp.LastName}");
     }
+
+
+Console.WriteLine("Thanks LinkedIn Learning for this course");
