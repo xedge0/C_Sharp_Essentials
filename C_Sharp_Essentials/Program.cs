@@ -27,21 +27,25 @@
 //    Console.CancelKeyPress -= OnCancel;
 //    }
 
-static void Writing(string input)
-    {
-    Console.WriteLine($"Hello, {input}");
-    }
+//static void Writing(string input)
+//    {
+//    Console.WriteLine($"Hello, {input}");
+//    }
 
-DelegateSamples.PassMeWork(Writing);
-DelegateSamples.PassMeLogic(CalcLength);
+DelegateSamples.PassMeWork((s) => Console.WriteLine($"Hello, {s}"));
+DelegateSamples.PassMeLogic((s) =>
+{
+    Console.WriteLine(s);
+    return s.Length;
+});
 
-static int CalcLength(string input)
-    {
-    return input.Length;
-    }
+//static int CalcLength(string input)
+//    {
+//    return input.Length;
+//    }
 
 var t = (string s) => Console.WriteLine(s);
-t("Edge");
+//t("Edge");
 
 var l = (string s) => s.Length;
 

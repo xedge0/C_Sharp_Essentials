@@ -47,7 +47,11 @@ public static class ThreadSamples
             }
         catch(AggregateException aex)
             {
-            aex.Handle((inner) => inner is JsonException);
+            aex.Handle((inner) =>
+            {
+                Console.WriteLine(inner.Message);
+                return inner is JsonException;
+            });
             Console.WriteLine(aex.Message);
             }
         }
