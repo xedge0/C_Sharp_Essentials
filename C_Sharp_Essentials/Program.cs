@@ -14,9 +14,10 @@ var filteredEmployees = employees
         .Where((e) => e.ID >= 2)
         .Select((es) => new { FirstName = es.FirstName, LastName = es.LastName });
 
-var fEmployee = from emp in employees
+var fEmployee = (from emp in employees
                 where emp.ID >= 2
-                select new { FirstName = emp.FirstName, LastName = emp.LastName };
+                orderby emp.ID descending
+                select emp).Skip(1).Take(3); //new { FirstName = emp.FirstName, LastName = emp.LastName };
 
 
 foreach(var emp in fEmployee)
