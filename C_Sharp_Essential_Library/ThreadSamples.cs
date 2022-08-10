@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace C_Sharp_Essential_Library;
+namespace C_Sharp_Essential.Library;
 
 public static class ThreadSamples
     {
