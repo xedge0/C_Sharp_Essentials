@@ -1,28 +1,41 @@
 ﻿using C_Sharp_Essential_Library;
 
-Console.WriteLine("Hit Ctrl + C to cancel");
-Console.CancelKeyPress += OnCancel;
+//Console.WriteLine("Hit Ctrl + C to cancel");
+//Console.CancelKeyPress += OnCancel;
 
-Delegate del = WritingHello;
-del.DynamicInvoke("Ahmed");
-DelegateSamples.PassMeWork(WritingHello);
+//Delegate del = WritingHello;
+//del.DynamicInvoke("Ahmed");
+//DelegateSamples.PassMeWork(WritingHello);
 
-static void WritingHello(string name)
+//static void WritingHello(string name)
+//    {
+//    Console.WriteLine($"Hello, {name}");
+//    DelegateSamples.SomethingHappened -= WritingHello; 
+//    }
+
+//DelegateSamples.SomethingHappened += WritingHello;
+//DelegateSamples.DoSomething();
+
+//for(int i = 0; i < 100000; i++)
+//    {
+//    Console.WriteLine(i);
+//    }
+
+//static void OnCancel(object sender, ConsoleCancelEventArgs args)
+//    {
+//    args.Cancel = false; //true
+//    Console.CancelKeyPress -= OnCancel;
+//    }
+
+static void Writing(string input)
     {
-    Console.WriteLine($"Hello, {name}");
-    DelegateSamples.SomethingHappened -= WritingHello; 
+    Console.WriteLine($"Hello, {input}");
     }
 
-DelegateSamples.SomethingHappened += WritingHello;
-DelegateSamples.DoSomething();
+DelegateSamples.PassMeWork(Writing);
+DelegateSamples.PassMeLogic(CalcLength);
 
-for(int i = 0; i < 100000; i++)
+static int CalcLength(string input)
     {
-    Console.WriteLine(i);
-    }
-
-static void OnCancel(object sender, ConsoleCancelEventArgs args)
-    {
-    args.Cancel = false; //true
-    Console.CancelKeyPress -= OnCancel;
+    return input.Length;
     }
