@@ -2,11 +2,6 @@
 
 public record Employee
     {
-
-    //public Employee(string fn)
-    //    {
-    //        FirstName = fn;
-    //    }
     public Employee(string fn, string ln, int id)
         {
         FirstName = fn;
