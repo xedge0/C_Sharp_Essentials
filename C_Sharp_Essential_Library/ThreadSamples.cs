@@ -30,7 +30,7 @@ public static class ThreadSamples
 
         var edge = JsonSerializer.Deserialize<Employee>(employeeJson);
 
-        Console.WriteLine($"The Employee {edge?.FirstName} {edge?.LastName}  has ID: {edge?.Id}");
+        Console.WriteLine($"The Employee {edge?.FirstName} {edge?.LastName}  has ID: {edge?.ID}");
         }
     public static async Task SimpleThreadAsync()
         {
@@ -47,7 +47,11 @@ public static class ThreadSamples
             }
         catch(AggregateException aex)
             {
-            aex.Handle((inner) => inner is JsonException);
+            aex.Handle((inner) =>
+            {
+                Console.WriteLine(inner.Message);
+                return inner is JsonException;
+            });
             Console.WriteLine(aex.Message);
             }
         }
@@ -61,7 +65,7 @@ public static class ThreadSamples
         var employeeJson = await File.ReadAllTextAsync(filePath);
 
         var edge = JsonSerializer.Deserialize<Employee>(employeeJson);
-        Console.WriteLine($"The Employee {edge?.FirstName} {edge?.LastName}  has ID: {edge?.Id}");
+        Console.WriteLine($"The Employee {edge?.FirstName} {edge?.LastName}  has ID: {edge?.ID}");
         }
     }
 
