@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Employees>
+	<Employee>
+		<FirstName>Edge</FirstName>
+		<LastName>Manager</LastName>
+		<Id>1</Id>
+	</Employee>
+	<Employee>
+		<FirstName>Rewan</FirstName>
+		<LastName>FinanceDirector</LastName>
+		<Id>2</Id>
+	</Employee>
+	<Employee>
+		<FirstName>Alex</FirstName>
+		<LastName>PropertyManagement</LastName>
+		<Id>3</Id>
+	</Employee>
+	<Employee>
+		<FirstName>Stone</FirstName>
+		<LastName>Accounting</LastName>
+		<Id>4</Id>
+	</Employee>
+	<Employee>
+		<FirstName>Wallee</FirstName>
+		<LastName>CXO</LastName>
+		<Id>5</Id>
+	</Employee>
+</Employees>
