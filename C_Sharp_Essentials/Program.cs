@@ -1,19 +1,21 @@
 ﻿using C_Sharp_Essential.Library;
 using C_Sharp_Essential.Library.Extensions;
 
-//var right = C_Sharp_Essential.Library.Extensions.StringExtensions.Right("Hello Four", 4);
-//Console.WriteLine(right);
-
-//var s = "right fives";
-//Console.WriteLine(s.Right(5));
-
-var names = new List<string> { "Edge", "Stone", "Alex", "Wall", "Xi" };
-
-var shortest = names.MinBy((s) => s.Length);
-Console.WriteLine($"Shortest Name : {shortest}");
-
-var orderedNames = names.OrderBy(s => s.Length);
-foreach (var name in orderedNames)
+var employees = new List<Employee>
     {
-    Console.WriteLine(name);
+    new Employee("Edge","Stone",1),
+    new Employee("Alex","Stone",2),
+    new Employee("Omar","Khan",3),
+    new Employee("Rewan","Adel",4),
+    new Employee("Sam","Adam",5)
+    };
+
+var filteredEmployees = employees
+        .Where((e) => e.ID >= 2)
+        .Select((es) => new { FirstName = es.FirstName, LastName = es.LastName });
+
+
+foreach(var e in filteredEmployees)
+    {
+    Console.WriteLine(e.FirstName);
     }
